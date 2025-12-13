@@ -6,11 +6,10 @@ import { Axe, ChefHat, Bike, ShieldCheck, ShoppingBag } from 'lucide-react';
 export const RoleSelector: React.FC = () => {
   const { setRole } = useApp();
 
-  const roles = [
+  const mainRoles = [
     { role: UserRole.CUSTOMER, label: 'Customer', icon: <ShoppingBag size={32} />, desc: 'Hungry? Order now.' },
     { role: UserRole.RESTAURANT, label: 'Restaurant', icon: <ChefHat size={32} />, desc: 'Manage your kitchen.' },
     { role: UserRole.RIDER, label: 'Rider', icon: <Bike size={32} />, desc: 'Deliver & earn.' },
-    { role: UserRole.ADMIN, label: 'Admin', icon: <ShieldCheck size={32} />, desc: 'System control.' },
   ];
 
   return (
@@ -31,8 +30,9 @@ export const RoleSelector: React.FC = () => {
         <p className="text-axe-steel text-xl font-light tracking-wide">Premium Delivery Infrastructure</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl z-10">
-        {roles.map((r) => (
+      {/* Main Apps */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl z-10 mb-16">
+        {mainRoles.map((r) => (
           <button
             key={r.role}
             onClick={() => setRole(r.role)}
@@ -46,6 +46,16 @@ export const RoleSelector: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-axe-handle to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
           </button>
         ))}
+      </div>
+
+      {/* Admin Link (Separated) */}
+      <div className="z-10">
+        <button 
+            onClick={() => setRole(UserRole.ADMIN)}
+            className="flex items-center gap-2 text-slate-500 hover:text-axe-rust transition-colors text-sm font-medium tracking-wider uppercase opacity-60 hover:opacity-100"
+        >
+            <ShieldCheck size={16} /> Admin Portal Access
+        </button>
       </div>
     </div>
   );
