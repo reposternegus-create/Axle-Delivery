@@ -1,0 +1,9 @@
+{
+  "name": "Axle Delivery",
+  "description": "A multi-role food delivery platform with a sharp, metallic aesthetic. Features Customer, Restaurant, Rider, and Admin interfaces.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
